@@ -1,0 +1,10 @@
+^C:\USERS\JOHN\DESKTOP\OPENGL\GLFW-3.4\SRC\CMAKELISTS.TXT
+setlocal
+C:\Users\john\Desktop\OpenGL\cmake-3.30.2\bin\cmake.exe -SC:/Users/john/Desktop/OpenGL/glfw-3.4 -BC:/Users/john/Desktop/OpenGL/glfw-3.4/Build --check-stamp-file C:/Users/john/Desktop/OpenGL/glfw-3.4/Build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
