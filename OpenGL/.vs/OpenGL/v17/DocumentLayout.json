@@ -1,25 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\",
+  "WorkspaceRootPath": "C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{12F4AB68-392F-46E1-9735-4B0B22B59389}|OpenGL.vcxproj|C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{12F4AB68-392F-46E1-9735-4B0B22B59389}|OpenGL.vcxproj|solutionrelative:Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Shader\\color_vs.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Shader\\color_vs.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Shader\\color_fs.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Shader\\color_fs.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Shader\\color_fs.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{12F4AB68-392F-46E1-9735-4B0B22B59389}|OpenGL.vcxproj|C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Shader\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{12F4AB68-392F-46E1-9735-4B0B22B59389}|OpenGL.vcxproj|C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{12F4AB68-392F-46E1-9735-4B0B22B59389}|OpenGL.vcxproj|solutionrelative:Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Shader\\color_vs.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Shader\\color_vs.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F4AB68-392F-46E1-9735-4B0B22B59389}|OpenGL.vcxproj|C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Shader\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{12F4AB68-392F-46E1-9735-4B0B22B59389}|OpenGL.vcxproj|solutionrelative:Shader\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{12F4AB68-392F-46E1-9735-4B0B22B59389}|OpenGL.vcxproj|C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{12F4AB68-392F-46E1-9735-4B0B22B59389}|OpenGL.vcxproj|C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{12F4AB68-392F-46E1-9735-4B0B22B59389}|OpenGL.vcxproj|solutionrelative:camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -30,30 +30,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Shader.h",
-              "DocumentMoniker": "C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Shader\\Shader.h",
+              "DocumentMoniker": "C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Shader\\Shader.h",
               "RelativeDocumentMoniker": "Shader\\Shader.h",
-              "ToolTip": "C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Shader\\Shader.h",
+              "ToolTip": "C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Shader\\Shader.h",
               "RelativeToolTip": "Shader\\Shader.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJoAAAA0AAAA",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAAAHMAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-02-26T00:41:30.848Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Source.cpp",
-              "DocumentMoniker": "C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Source.cpp",
+              "DocumentMoniker": "C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Source.cpp",
               "RelativeDocumentMoniker": "Source.cpp",
-              "ToolTip": "C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Source.cpp",
+              "ToolTip": "C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Source.cpp",
               "RelativeToolTip": "Source.cpp",
-              "ViewState": "AQIAAOoAAAAAAAAAAAAAAJsAAAAeAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAQwCIAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-13T06:13:29.858Z",
               "IsPinned": true,
@@ -61,26 +62,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "color_vs.shader",
-              "DocumentMoniker": "C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Shader\\color_vs.shader",
+              "DocumentMoniker": "C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Shader\\color_vs.shader",
               "RelativeDocumentMoniker": "Shader\\color_vs.shader",
-              "ToolTip": "C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Shader\\color_vs.shader",
+              "ToolTip": "C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Shader\\color_vs.shader",
               "RelativeToolTip": "Shader\\color_vs.shader",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA5AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
               "WhenOpened": "2025-03-03T06:48:45.328Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "color_fs.shader",
-              "DocumentMoniker": "C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Shader\\color_fs.shader",
+              "DocumentMoniker": "C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Shader\\color_fs.shader",
               "RelativeDocumentMoniker": "Shader\\color_fs.shader",
-              "ToolTip": "C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\Shader\\color_fs.shader",
+              "ToolTip": "C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\Shader\\color_fs.shader",
               "RelativeToolTip": "Shader\\color_fs.shader",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAB8AAAAvAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAIwCAAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
               "WhenOpened": "2025-03-03T06:41:33.651Z",
               "EditorCaption": ""
@@ -89,9 +90,9 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "camera.h",
-              "DocumentMoniker": "C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\camera.h",
+              "DocumentMoniker": "C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\camera.h",
               "RelativeDocumentMoniker": "camera.h",
-              "ToolTip": "C:\\Users\\john\\Desktop\\OpenGL\\OpenGL\\camera.h",
+              "ToolTip": "C:\\Users\\john\\Desktop\\OpenGL\\3DGraphicRender_OpenGL\\OpenGL\\camera.h",
               "RelativeToolTip": "camera.h",
               "ViewState": "AQIAAF0AAAAAAAAAAAAAAD8AAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
