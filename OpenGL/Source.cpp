@@ -23,7 +23,7 @@ const unsigned int SC_WIDTH = 800;
 const unsigned int SC_HEIGHT = 600;
 
 //camera
-Camera camera(glm::vec3(0.0f, 0.0f, 5.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SC_WIDTH / 2.0f;
 float lastY = SC_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -32,7 +32,7 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
-glm::vec3 lightPos(5.0f, 5.1f, 5.0f);
+glm::vec3 lightPos(1.5f, 1.0f, 2.0f);
 
 float vertices[] =
 {
@@ -80,11 +80,6 @@ float vertices[] =
 	-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f
 };// 六个面，每个面两个三角形六个顶点
 
-unsigned int indices[] =
-{
-	 0, 1, 3,
-	 1, 2, 3
-};
 
 int main()
 {
@@ -121,6 +116,9 @@ int main()
 	glfwSetScrollCallback(window, scroll_callback);
 	//active mouse scroll callback
 
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	// tell GLFW to capture mouse cursor
+
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		std::cout << "Failed to initialize GLAD" << std::endl;
@@ -128,8 +126,8 @@ int main()
 	}
 
 	glEnable(GL_DEPTH_TEST);// 开启深度测试
-	glFrontFace(GL_CW);  // 试试改成顺时针方向
-
+	//glEnable(GL_CULL_FACE);
+	//glCullFace(GL_BACK); // 剔除背面三角形
 
 
 	Shader LightingShader("./Shader/color_vs.shader", "./Shader/color_fs.shader");
@@ -142,7 +140,6 @@ int main()
 
 	glGenVertexArrays(1, &cubeVAO);//vertex buffer array object, storage multiple VBO
 	glGenBuffers(1, &VBO); //use glGenBuffers function generate a VBO with bufferID
-	//glGenBuffers(1, &EBO); 
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO); //Bind VBO to vertexbuffer"GL_ARRAY_BUFFER"
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -150,15 +147,12 @@ int main()
 
 	glBindVertexArray(cubeVAO);
 
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);//Bind EBO
-	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);//将索引复制到缓冲里
-
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);//顶点属性，顶点属性大小vec3，数据类型，数据是否标准化，步长，参数类型
-	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(0);//里面编号对应shader中的layout(0)
 	//Tell OpenGL how to analysis vertex data
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));//normal attribute
-	glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(1);//layout(1)
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));//texture attribute
 	glEnableVertexAttribArray(2);
 
@@ -173,9 +167,13 @@ int main()
 	glEnableVertexAttribArray(0);
 
 	unsigned int diffuseMap = loadTexture("C:/Users/john/Desktop/OpenGL/3DGraphicRender_OpenGL/OpenGL/Texture/container2.png");
+	unsigned int specularMap = loadTexture("C:/Users/john/Desktop/OpenGL/3DGraphicRender_OpenGL/OpenGL/Texture/container2_specular.png");
+	
 	//shader configuration
 	LightingShader.use();
 	LightingShader.SetInt("material.diffuse", 0);
+	LightingShader.SetInt("material.specular", 1);
+	
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -192,12 +190,12 @@ int main()
 
 		LightingShader.use();
 
-		LightingShader.setVec3("lightPos", lightPos);
+		LightingShader.setVec3("light.position", lightPos);
 		LightingShader.setVec3("viewPos", camera.Position);
 
 		//light properties
-		LightingShader.setVec3("light.ambient", 0.5f, 0.5f, 0.5f);
-		LightingShader.setVec3("light.diffuse", 0.8f, 0.8f, 0.8f);
+		LightingShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+		LightingShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
 		LightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 
 
@@ -206,24 +204,25 @@ int main()
 		LightingShader.SetFloat("material.shininess", 64.0f);
 
 		// create transformations
-		glm::mat4 model = glm::mat4(1.0f);
+		
 		glm::mat4 view = glm::mat4(1.0f);
 		glm::mat4 projection = glm::mat4(1.0f);
-
 		//view && projection transform
 		projection = glm::perspective(glm::radians(camera.Zoom), (float)SC_WIDTH / (float)SC_HEIGHT, 0.1f, 100.0f);// 声明一个投影矩阵
-		LightingShader.setMat4("projection", projection);//pass to shader
-
 		view = camera.GetViewMatrix();
+		LightingShader.setMat4("projection", projection);//pass to shader
 		LightingShader.setMat4("view", view);
 
 		// pass them to the shaders
-		// world transformation		
+		// world transformation
+		glm::mat4 model = glm::mat4(1.0f);
 		LightingShader.setMat4("model", model);
 
-		//bind texture(diffuseMap)
+		//bind texture(diffuseMap&&specularMap)
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, diffuseMap);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, specularMap);
 
 		//render cube
 		glBindVertexArray(cubeVAO); //if we have multiple VAO, need to bind it everytime	

@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\john\Desktop\OpenGL\glfw-3.4\include;C:\Users\john\Desktop\OpenGL\OpenGL\src\;C:\Users\john\Desktop\OpenGL\glad\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\john\Desktop\OpenGL\glfw-3.4\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\john\Desktop\OpenGL\3DGraphicRender_OpenGL\glfw-3.4\include;C:\Users\john\Desktop\OpenGL\3DGraphicRender_OpenGL\OpenGL\src;C:\Users\john\Desktop\OpenGL\3DGraphicRender_OpenGL\glad\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\john\Desktop\OpenGL\3DGraphicRender_OpenGL\glfw-3.4\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
