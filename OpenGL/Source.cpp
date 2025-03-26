@@ -94,6 +94,11 @@ glm::vec3 cubePositions[] = {
 	glm::vec3(-1.3f,  1.0f, -1.5f)
 };
 
+glm::vec3 pointlightPositions[] = {
+	glm::vec3(0.7f,  0.2f,  2.0f),
+	glm::vec3(2.3f, -3.3f, -4.0f),
+};
+
 int main()
 {
 	glfwInit();
@@ -202,24 +207,43 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear buffer color
 
 		LightingShader.use();
-		LightingShader.setVec3("light.position", camera.Position);
-		LightingShader.setVec3("light.direction", camera.Front);
-		LightingShader.SetFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
-		LightingShader.SetFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
-		LightingShader.setVec3("viewPos", camera.Position);
-
-		//light properties
-		LightingShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
-		LightingShader.setVec3("light.diffuse", 0.8f, 0.8f, 0.8f);
-		LightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-		LightingShader.SetFloat("light.constant", 1.0f);
-		LightingShader.SetFloat("light.linear", 0.09f);
-		LightingShader.SetFloat("light.quadratic", 0.032f);
-
-
 		//materials properties
 		LightingShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
 		LightingShader.SetFloat("material.shininess", 64.0f);
+
+		// directional light
+		LightingShader.setVec3("dirlight.direction", -0.2f, -1.0f, -0.3f);
+		LightingShader.setVec3("dirlight.ambient", 0.05f, 0.05f, 0.05f);
+		LightingShader.setVec3("dirlight.diffuse", 0.4f, 0.4f, 0.4f);
+		LightingShader.setVec3("dirlight.specular", 0.5f, 0.5f, 0.5f);
+		// point light 1
+		LightingShader.setVec3("pointlights[0].position", pointlightPositions[0]);
+		LightingShader.setVec3("pointlights[0].ambient", 0.05f, 0.05f, 0.05f);
+		LightingShader.setVec3("pointlights[0].diffuse", 0.8f, 0.8f, 0.8f);
+		LightingShader.setVec3("pointlights[0].specular", 1.0f, 1.0f, 1.0f);
+		LightingShader.SetFloat("pointlights[0].constant", 1.0f);
+		LightingShader.SetFloat("pointlights[0].linear", 0.09f);
+		LightingShader.SetFloat("pointlights[0].quadratic", 0.032f);
+		// point light 2
+		LightingShader.setVec3("pointlights[1].position", pointlightPositions[1]);
+		LightingShader.setVec3("pointlights[1].ambient", 0.05f, 0.05f, 0.05f);
+		LightingShader.setVec3("pointlights[1].diffuse", 0.8f, 0.8f, 0.8f);
+		LightingShader.setVec3("pointlights[1].specular", 1.0f, 1.0f, 1.0f);
+		LightingShader.SetFloat("pointlights[1].constant", 1.0f);
+		LightingShader.SetFloat("pointlights[1].linear", 0.09f);
+		LightingShader.SetFloat("pointlights[1].quadratic", 0.032f);
+	
+		// spotLight
+		LightingShader.setVec3("spotlight.position", camera.Position);
+		LightingShader.setVec3("spotlight.direction", camera.Front);
+		LightingShader.setVec3("spotlight.ambient", 0.0f, 0.0f, 0.0f);
+		LightingShader.setVec3("spotlight.diffuse", 1.0f, 1.0f, 1.0f);
+		LightingShader.setVec3("spotlight.specular", 1.0f, 1.0f, 1.0f);
+		LightingShader.SetFloat("spotlight.constant", 1.0f);
+		LightingShader.SetFloat("spotlight.linear", 0.09f);
+		LightingShader.SetFloat("spotlight.quadratic", 0.032f);
+		LightingShader.SetFloat("spotlight.cutOff", glm::cos(glm::radians(12.5f)));
+		LightingShader.SetFloat("spotlight.outerCutOff", glm::cos(glm::radians(15.0f)));
 
 		// create transformations
 		
