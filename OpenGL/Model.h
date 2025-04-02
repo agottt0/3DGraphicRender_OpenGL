@@ -1,7 +1,7 @@
-#ifndef MODEL_H;
-#define MODEL_H;
+#ifndef MODEL_H
+#define MODEL_H
 
-#include "glad/glad.h";
+#include "glad/glad.h"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
@@ -147,20 +147,95 @@ private:
 		vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
 		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 		// 2.specular maps
+		vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+		// 3.normal maps
+		vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
+		textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+		// 4.height maps
+		vector<Texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
+		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
-
-
-
-		vector<Texture> loadMaterialTextures(aiMaterial * mat, aiTextureType type, string typeName)
-		{
-			vector<Texture> textures;
-			for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
-			{
-				aistring str;
-
-			}
-		}
+		// return a mesh object created from the extracted mesh object
+		return Mesh(vertices, indices, textures);
 	}
 
+	vector<Texture> loadMaterialTextures(aiMaterial * mat, aiTextureType type, string typeName)
+	{
+		vector<Texture> textures;
+		for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
+		{
+			aiString str;
+			mat->GetTexture(type, i, &str);
+			// check if texture was loaded before
+			bool skip = false;
+			for (unsigned int j = 0; j < textures_loaded.size(); j++)
+			{
+				if (strcmp(textures_loaded[j].path.data(), str.C_Str()) == 0)
+				{
+					textures.push_back(textures_loaded[j]);
+					skip = true;
+					break;
+				}
+			}
+			if (!skip)
+			{
+				Texture texture;
+				texture.id = TextureFromFile(str.C_Str(), this->directory);
+				std::cout << "Loading texture from directory: " << this->directory << std::endl;
+				std::cout << "Texture file: " << str.C_Str() << std::endl;
+
+				texture.type = typeName;
+				texture.path = str.C_Str();
+				textures.push_back(texture);
+				textures_loaded.push_back(texture);
+			}
+		}
+		return textures;
+	}
+	
+
 };
+
+unsigned int TextureFromFile(const char* path, const string& directory, bool gamma)
+{
+	string filename = string(path);
+	filename = directory + '/' + filename;
+	
+	unsigned int textureID;
+	glGenTextures(1, &textureID);
+
+	int width, height, nrComponent;
+	unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrComponent, 0);
+	if (data)
+	{
+		GLenum format = GL_RGB;
+		if (nrComponent == 1)
+			format = GL_RED;
+		else if (nrComponent == 3)
+			format = GL_RGB;
+		else if (nrComponent == 4)
+			format = GL_RGBA;
+	
+
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		stbi_image_free(data);
+	}
+	else
+	{
+		std::cout << "Texture failed to load at path: " << path << std::endl;
+		glDeleteTextures(1, &textureID); // 删除无效纹理
+		textureID = 0; // 标记为无效ID
+	}
+
+	return textureID;
+}
 #endif

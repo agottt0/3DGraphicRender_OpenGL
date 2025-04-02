@@ -1,6 +1,6 @@
 #pragma once
-#ifndef MESH_H;
-#define MESH_H;
+#ifndef MESH_H
+#define MESH_H
 
 #include "glad/glad.h"
 #include "Shader/Shader.h"
@@ -17,7 +17,7 @@ using namespace std;
 struct Vertex {
 	glm::vec3 Position;
 	glm::vec3 Normal;
-	glm::vec3 TexCoords;
+	glm::vec2 TexCoords;
 	glm::vec3 Tangent;
 	glm::vec3 BitTangent;
 
@@ -77,7 +77,7 @@ public:
 				number = to_string(heightNR++);
 
 			// set the sampler to the correct texture unit
-			glUniform1i(glGetUniformLocation(shader.ID, (name + number).c_str(), i);
+			glUniform1i(glGetUniformLocation(shader.ID, (name + number).c_str()), i);
 			// bind the texture
 			glBindTexture(GL_TEXTURE_2D, textures[i].id);
 		}
@@ -93,7 +93,7 @@ private:
 	//render data
 	unsigned int VBO, EBO;
 
-	void setupMeh()
+	void setupMesh()
 	{
 		glGenVertexArrays(1, &VAO);//vertex buffer array object, storage multiple VBO
 		glGenBuffers(1, &VBO); //use glGenBuffers function generate a VBO with bufferID
@@ -112,22 +112,22 @@ private:
 		
 		//Tell OpenGL how to analysis vertex data
 		glEnableVertexAttribArray(1);//layout(1)
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(Vertex), (void*)offsetof(Vertex, Normal));//normal attribute
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));//normal attribute
 		
 		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(Vertex), (void*)offsetof(Vertex, TexCoords));//texture attribute
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, TexCoords));//texture attribute
 
 		glEnableVertexAttribArray(3);
-		glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(Vertex), (void*)offsetof(Vertex, Tangent));
+		glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Tangent));
 
 		glEnableVertexAttribArray(4);
-		glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(Vertex), (void*)offsetof(Vertex, BitTangent));
+		glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, BitTangent));
 		
 		glEnableVertexAttribArray(5);
-		glVertexAttribPointer(5, 4, GL_INT, 8 * sizeof(Vertex), (void*)offsetof(Vertex, m_BoneIDs));//texture attribute
+		glVertexAttribIPointer(5, 4, GL_INT, sizeof(Vertex), (void*)offsetof(Vertex, m_BoneIDs));//texture attribute
 
 		glEnableVertexAttribArray(6);
-		glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, 8 * sizeof(Vertex), (void*)offsetof(Vertex, m_Weights));//texture attribute
+		glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, m_Weights));//texture attribute
 		
 
 		glBindVertexArray(0);
