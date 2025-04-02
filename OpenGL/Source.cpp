@@ -156,23 +156,7 @@ int main()
 
 	unsigned int VBO, cubeVAO;
 
-	glGenVertexArrays(1, &cubeVAO);//vertex buffer array object, storage multiple VBO
-	glGenBuffers(1, &VBO); //use glGenBuffers function generate a VBO with bufferID
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO); //Bind VBO to vertexbuffer"GL_ARRAY_BUFFER"
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	//把用户定义的数据复制到当前绑定缓冲
-
-	glBindVertexArray(cubeVAO);
-
-
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);//顶点属性，顶点属性大小vec3，数据类型，数据是否标准化，步长，参数类型
-	glEnableVertexAttribArray(0);//里面编号对应shader中的layout(0)
-	//Tell OpenGL how to analysis vertex data
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));//normal attribute
-	glEnableVertexAttribArray(1);//layout(1)
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));//texture attribute
-	glEnableVertexAttribArray(2);
+	
 
 	unsigned int lightcubeVAO;
 	glGenVertexArrays(1, &lightcubeVAO);
